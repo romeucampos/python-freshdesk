@@ -108,12 +108,11 @@ class TicketAPI(object):
         ticket = self._api._post(url, data=json.dumps(data))
         return Ticket(**ticket)
 
-    def merge_ticket(self):
+    def merge_ticket(self, dados):
         """Updates a ticket from a given ticket ID"""
 
         url = "tickets/merge"
-        ticket = self._api._put(url, 
-            data='{"primary_id":6224,"ticket_ids":[6223,6222],"convert_recipients_to_cc":false,"note_in_primary":{"body":"Sample note","private":false}}')
+        ticket = self._api._put(url, data=dados)
         return Ticket(**ticket)
     
     def update_ticket(self, ticket_id, **kwargs):
